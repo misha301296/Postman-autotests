@@ -1,0 +1,22 @@
+pm.test("Правильное имя персонажа", function () { 
+    pm.expect(pm.response.json().name).to.equal("Obi-Wan Kenobi"); 
+    })
+
+
+pm.test("Response status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+
+pm.test("Name is a non-empty string", function () {
+    const responseData = pm.response.json();
+
+    pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, "Name should not be empty");
+});
+
+
+pm.test("Height should be a number", function () {
+    const responseData = pm.response.json();
+
+    pm.expect(responseData.height).to.be.a('number');
+});
